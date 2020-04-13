@@ -1,0 +1,49 @@
+<div id="tl_buttons">
+    <a href="<?= ampersand($this->backUrl) ?>" class="header_back" title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
+</div>
+
+<h2 class="sub_headline"><?= $GLOBALS['TL_LANG']['tl_page']['import'][1] ?></h2>
+
+<div class="widget page-import-text">
+    <p><?= $GLOBALS['TL_LANG']['tl_page']['import_description'] ?></p>
+    <p class="current-user-folder">
+        Benutzerordner: <?= $this->currentUserFolder ?>
+    </p>
+</div>
+
+<?= $this->message ?>
+
+<form action="<?= ampersand($this->action) ?>" id="tl_member_import" class="tl_form" method="post">
+    <div class="tl_formbody_edit">
+        <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formId ?>">
+        <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+
+        <fieldset class="tl_tbox nolegend">
+            <div class="widget w50 clr">
+                <h3><label for="type"><?= $GLOBALS['TL_LANG']['tl_page']['import_type'][0] ?></label></h3>
+                <select name="type" id="type" class="tl_select">
+                    <?php foreach ($this->typeOptions as $value => $label): ?>
+                    <option value="<?= $value ?>"><?= $label ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_page']['import_type'][1] ?></p>
+            </div>
+
+            <div class="widget w50 clr">
+                <h3><label for="import_name"><?= $GLOBALS['TL_LANG']['tl_page']['import_name'][0] ?></label></h3>
+                <select name="import_name" id="import_name" class="tl_select">
+                    <?php foreach ($this->folderOptions as $value => $label): ?>
+                    <option value="<?= $value ?>"><?= $label ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_page']['import_name'][1] ?></p>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="tl_formbody_submit">
+        <div class="tl_submit_container">
+            <input type="submit" name="import" id="import" class="tl_submit" accesskey="e" value="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['tl_page']['import'][0]) ?>">
+        </div>
+    </div>
+</form>
