@@ -44,7 +44,7 @@ $GLOBALS['TL_LANG']['tl_page']['import_name'] = ['Name des Ordners für den Impo
 // $GLOBALS['TL_LANG']['tl_page']['import_considerFilters'] = ['Listenfilter berücksichtigen', 'Nur die Zeilen exportieren, die in der Listenansicht gefiltert wurden.'];
 // $GLOBALS['TL_LANG']['tl_page']['import_headerFields'] = ['Inklusive Zellenüberschrift'];
 // $GLOBALS['TL_LANG']['tl_page']['import_raw'] = ['Nur Rohdaten'];
-$GLOBALS['TL_LANG']['tl_page']['import_message']['complete'] = 'Es wurden %d Seiten, %d Artikel und %d Inhaltselemente erfolgreich importiert, die neue ID des Startpunktes lautet <strong>%d<strong>.';
+$GLOBALS['TL_LANG']['tl_page']['import_message']['complete'] = 'Es wurden %d Seiten, %d Artikel und %d Inhaltselemente erfolgreich importiert, die neue ID des Startpunktes lautet <strong>%d</strong>.';
 $GLOBALS['TL_LANG']['tl_page']['import_userFolder'] = $GLOBALS['TL_LANG']['tl_page']['export_userFolder'];
 
 $GLOBALS['TL_LANG']['tl_page']['import_typeRef'] = [

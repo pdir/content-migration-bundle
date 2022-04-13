@@ -44,7 +44,7 @@ $GLOBALS['TL_LANG']['tl_page']['import_name'] = ['Name of the folder for import'
 // $GLOBALS['TL_LANG']['tl_page']['import_considerFilters'] = ['Consider list filters', 'Export only the rows that were filtered in the list view.'];
 // $GLOBALS['TL_LANG']['tl_page']['import_headerFields'] = ['Include cell header'];
 // $GLOBALS['TL_LANG']['tl_page']['import_raw'] = ['Raw data only'];
-$GLOBALS['TL_LANG']['tl_page']['import_message']['complete'] = 'It successfully imported %d pages, %d articles and %d content items, the new ID of the starting point is <strong>%d<strong>.';
+$GLOBALS['TL_LANG']['tl_page']['import_message']['complete'] = 'It successfully imported %d pages, %d articles and %d content items, the new ID of the starting point is <strong>%d</strong>.';
 $GLOBALS['TL_LANG']['tl_page']['import_userFolder'] = $GLOBALS['TL_LANG']['tl_page']['export_userFolder'];
 
 $GLOBALS['TL_LANG']['tl_page']['import_typeRef'] = [
