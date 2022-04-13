@@ -224,7 +224,7 @@ class PageExportController
 
             $widgetPageId->label = $GLOBALS['TL_LANG']['tl_page']['export_pageId'][0];
             $widgetPageId->name = 'pageId';
-            $widgetPageId->value = $intNode ?? '';
+            $widgetPageId->value = $intNode ?? null;
 
             $template->widgetPageId = $widgetPageId->parse();
         }
