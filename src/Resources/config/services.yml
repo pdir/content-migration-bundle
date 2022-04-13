@@ -1,0 +1,31 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    _instanceof:
+        Contao\CoreBundle\Framework\FrameworkAwareInterface:
+            calls:
+                - ["setFramework", ["@contao.framework"]]
+
+        Symfony\Component\DependencyInjection\ContainerAwareInterface:
+            calls:
+                - ["setContainer", ["@service_container"]]
+
+    Pdir\ContentMigrationBundle\Controller\PageExportController:
+        public: true
+        arguments:
+            - "@contao.framework"
+            - "@request_stack"
+
+    Pdir\ContentMigrationBundle\Controller\PageImportController:
+        public: true
+        arguments:
+            - "@contao.framework"
+            - "@request_stack"
+
+    Pdir\ContentMigrationBundle\Controller\NewsImportController:
+        public: true
+        arguments:
+            - "@contao.framework"
+            - "@request_stack"

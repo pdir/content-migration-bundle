@@ -1,0 +1,110 @@
+<div class="pdir_content_migration">
+  <div id="tl_buttons">
+    <a href="<?= ampersand($this->backUrl) ?>" class="header_back" title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
+  </div>
+
+  <div class="widget">
+    <h2><?= $GLOBALS['TL_LANG']['tl_news_archive']['import'][1] ?></h2>
+  </div>
+  <div class="widget page-import-text clr">
+    <p><?= $GLOBALS['TL_LANG']['tl_news_archive']['import_description'] ?></p>
+  </div>
+
+  <?= $this->message ?>
+
+  <form action="<?= ampersand($this->action) ?>" id="tl_news_archive_import" class="tl_form" method="post">
+    <div class="tl_formbody_edit">
+      <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formId ?>">
+      <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+
+      <fieldset class="tl_tbox type_legend">
+        <legend onclick="AjaxRequest.toggleFieldset(this,'type_legend','tl_news_archive')">Typ</legend>
+        <div class="widget w50 clr">
+          <h3><label for="type"><?= $GLOBALS['TL_LANG']['tl_news_archive']['import_type'][0] ?></label></h3>
+          <select name="type" id="type" class="tl_select" onchange="this.form.submit()">
+            <?php foreach ($this->typeOptions as $value => $label): ?>
+              <option value="<?= $value ?>"><?= $label ?></option>
+            <?php endforeach; ?>
+          </select>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['import_type'][1] ?></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="tl_tbox typo3_legend">
+        <legend onclick="AjaxRequest.toggleFieldset(this,'typo3_legend','tl_news_archive')">Quelle - Daten der TYPO3 Installation</legend>
+        <div class="widget w50 clr">
+          <h3><label for="typo3_tt_news_domain"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_domain'][0] ?></label></h3>
+          <input type="text" name="typo3_tt_news_domain" id="typo3_tt_news_domain" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_domain'][1] ?></p>
+        </div>
+        <div class="widget w50 clr">
+          <h3><label for="typo3_tt_news_host"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_host'][0] ?></label></h3>
+          <input type="text" name="typo3_tt_news_host" id="typo3_tt_news_host" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_host'][1] ?></p>
+        </div>
+        <div class="widget w50">
+          <h3><label for="typo3_tt_news_database"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_database'][0] ?></label></h3>
+          <input type="text" name="typo3_tt_news_database" id="typo3_tt_news_database" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_database'][1] ?></p>
+        </div>
+        <div class="widget w50">
+          <h3><label for="typo3_tt_news_user"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_user'][0] ?></label></h3>
+          <input type="text" name="typo3_tt_news_user" id="typo3_tt_news_user" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_user'][1] ?></p>
+        </div>
+        <div class="widget w50">
+          <h3><label for="typo3_tt_news_password"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_password'][0] ?></label></h3>
+          <input type="text" name="typo3_tt_news_password" id="typo3_tt_news_password" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_password'][1] ?></p>
+        </div>
+        <div class="widget w50">
+          <h3><label for="typo3_tt_news_lng"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_lng'][0] ?></label></h3>
+          <input type="text" name="typo3_tt_news_lng" id="typo3_tt_news_lng" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_lng'][1] ?></p>
+        </div>
+        <div class="widget w50">
+          <h3><label for="typo3_tt_news_pid"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_pid'][0] ?></label></h3>
+          <input type="text" name="typo3_tt_news_pid" id="typo3_tt_news_pid" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_pid'][1] ?></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="tl_tbox target_legend">
+        <legend onclick="AjaxRequest.toggleFieldset(this,'target_legend','tl_news_archive')">Ziel - Nachrichtenarchiv</legend>
+        <div class="widget clr">
+          <h2></h2>
+        </div>
+        <div class="widget w50 clr">
+          <h3><label for="typo3_tt_news_contao_news_archive"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_contao_news_archive'][0] ?></label></h3>
+          <select name="typo3_tt_news_contao_news_archive" id="typo3_tt_news_contao_news_archive" class="tl_select">
+            <?php foreach ($this->newsArchiveOptions as $value => $label): ?>
+              <option value="<?= $value ?>"><?= $label ?></option>
+            <?php endforeach; ?>
+          </select>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_contao_news_archive'][1] ?></p>
+        </div>
+          <div class="widget w50 clr">
+              <h3><label for="typo3_tt_news_contao_news_author"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_contao_news_author'][0] ?></label></h3>
+              <select name="typo3_tt_news_contao_news_author" id="typo3_tt_news_contao_news_author" class="tl_select">
+                  <?php foreach ($this->newsAuthorOptions as $value => $label): ?>
+                  <option value="<?= $value ?>"><?= $label ?></option>
+                  <?php endforeach; ?>
+              </select>
+              <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_contao_news_author'][1] ?></p>
+          </div>
+        <div class="widget w50">
+          <h3><label for="typo3_tt_news_image_folder"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_image_folder'][0] ?></label></h3>
+          <input type="text" name="typo3_tt_news_image_folder" id="typo3_tt_news_image_folder" class="tl_text" value="" placeholder="files/new_folder" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_news_archive']['typo3_tt_news_image_folder'][1] ?></p>
+        </div>
+      </fieldset>
+
+    </div>
+
+    <div class="tl_formbody_submit">
+      <div class="tl_submit_container">
+        <input type="submit" name="import" id="import" class="tl_submit" accesskey="e" value="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['tl_news_archive']['import'][0]) ?>">
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,14 @@
+#tl_buttons .pdir_content_migration {
+  padding: 3px 0 3px 21px;
+  background-size: 12px;
+}
+#tl_buttons .pdir_content_migration .page_export {
+  background-size: 15px;
+}
+
+.pdir_content_migration select option[value=content],
+.pdir_content_migration .disabled {
+  color: gray;
+}
+
+/*# sourceMappingURL=pdir_cm_backend.css.map */

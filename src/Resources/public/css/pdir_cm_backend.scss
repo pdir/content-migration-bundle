@@ -1,0 +1,24 @@
+$contao-blue: #006494;
+$contao-green: #589b0e;
+
+#tl_buttons .pdir_content_migration {
+  padding: 3px 0 3px 21px;
+  background-size: 12px;
+
+  .page_export {
+    background-size: 15px;
+  }
+}
+
+.pdir_content_migration {
+
+  select option[value=content],
+  .disabled {
+    color: gray;
+  }
+
+
+  .current-user-folder {
+
+  }
+}
