@@ -13,7 +13,9 @@
     <p class="tl_info current-user-folder"><?= $GLOBALS['TL_LANG']['tl_page']['export_userFolder'] ?> <?= $this->currentUserFolder ?>/[<?= strtoupper($GLOBALS['TL_LANG']['tl_page']['export_exportName'][0]) ?>]/
   </p>
 
-  <?= $this->message ?>
+  <div class="widget message">
+    <?= $this->message ?>
+  <div>
 
   <form action="<?= ampersand($this->action) ?>" id="tl_page_export" class="tl_form" method="post">
     <div class="tl_formbody_edit">

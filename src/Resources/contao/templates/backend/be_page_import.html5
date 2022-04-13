@@ -13,7 +13,9 @@
     </div>
   </div>
 
-  <?= $this->message ?>
+  <div class="widget message">
+    <?= $this->message ?>
+  <div>
 
   <form action="<?= ampersand($this->action) ?>" id="tl_member_import" class="tl_form" method="post">
     <div class="tl_formbody_edit">
