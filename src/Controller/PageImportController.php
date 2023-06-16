@@ -226,6 +226,10 @@ class PageImportController
 
                         if ('pid' === $key && $pageCounter > 0) {
                             // $lastPid = $key;
+                            if(!$this->replacementIds['pagePid'.$value]) {
+                                $this->replacementIds['pagePid'.$value] = $value;
+                            }
+
                             $pageModel->pid = $this->replacementIds['pagePid'.$value];
                             continue;
                         }

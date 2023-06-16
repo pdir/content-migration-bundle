@@ -115,8 +115,8 @@ class PageExportController
         if (null !== $pages) {
             foreach ($pages as $page) {
                 $ids = [];
-                $ids[] = 'p'.$this->withLeadingZeroes($page->pid);
-                $ids[] = 'id'.$this->withLeadingZeroes($page->id);
+                $ids[] = 'p'.$this->withLeadingZeroes((string)$page->pid);
+                $ids[] = 'id'.$this->withLeadingZeroes((string)$page->id);
 
                 // write page model
                 $this->saveSerializeFile(
@@ -134,7 +134,7 @@ class PageExportController
                     foreach ($articleModel as $article) {
                         $this->saveSerializeFile(
                             $userFolder,
-                            ['id'.$this->withLeadingZeroes($article->id), 'pid'.$this->withLeadingZeroes($article->pid)],
+                            ['id'.$this->withLeadingZeroes((string)$article->id), 'pid'.$this->withLeadingZeroes((string)$article->pid)],
                             $article->row(),
                             'article'
                         );
@@ -146,7 +146,7 @@ class PageExportController
                             foreach ($contentModel as $content) {
                                 $this->saveSerializeFile(
                                     $userFolder,
-                                    ['pid'.$this->withLeadingZeroes($article->pid), 'id'.$this->withLeadingZeroes($content->id), ($content->ptable ?: 'null')],
+                                    ['pid'.$this->withLeadingZeroes((string)$article->pid), 'id'.$this->withLeadingZeroes((string)$content->id), ($content->ptable ?: 'null')],
                                     $content->row(),
                                     'content'
                                 );
