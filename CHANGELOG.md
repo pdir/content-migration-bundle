@@ -12,7 +12,8 @@ Types of changes
 
 ## [1.0.1](https://github.com/pdir/content-migration-bundle/tree/1.0.1) – 2023-06-19
 
-- [Fixed] Fix import and export
+- [Fixed] Fix import
+- [Fixed] Fix export ([#3](https://github.com/pdir/content-migration-bundle/issues/3))
 
 ## [1.0.0](https://github.com/pdir/content-migration-bundle/tree/1.0.0) – 2022-04-13
 
