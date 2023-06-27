@@ -10,7 +10,7 @@ Types of changes
     Security in case of vulnerabilities.
 )
 
-## [1.0.1](https://github.com/pdir/content-migration-bundle/tree/1.0.1) – 2023-06-19
+## [1.0.1](https://github.com/pdir/content-migration-bundle/tree/1.0.1) – 2023-06-27
 
 - [Fixed] Fix import
 - [Fixed] Fix export ([#3](https://github.com/pdir/content-migration-bundle/issues/3))
