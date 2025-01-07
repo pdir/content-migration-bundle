@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Pdir\ContentMigrationBundle\ContaoManager;
 
+use con4gis\FirefighterBundle\con4gisFirefighterBundle;
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
@@ -31,7 +32,7 @@ class Plugin implements BundlePluginInterface
         return [
             BundleConfig::create(PdirContentMigrationBundle::class)
                 ->setLoadAfter(
-                    [ContaoCoreBundle::class]
+                    [ContaoCoreBundle::class, con4gisFirefighterBundle::class]
                 ),
         ];
     }

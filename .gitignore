@@ -3,3 +3,5 @@
 /vendor/
 *.sass
 *.css.map
+.idea
+.DS_Store

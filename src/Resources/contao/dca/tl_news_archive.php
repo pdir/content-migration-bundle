@@ -16,12 +16,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-array_insert($GLOBALS['TL_DCA']['tl_news_archive']['list']['global_operations'], 0, [
-    'import' => [
-        'label' => &$GLOBALS['TL_LANG']['tl_news_archive']['import'],
-        'href' => 'key=import',
-        'icon' => 'bundles/pdircontentmigration/icons/002-import.svg',
-        'class' => 'pdir_content_migration news_import',
-        'attributes' => 'onclick="Backend.getScrollOffset()"',
-    ],
-]);
+if (isset($GLOBALS['TL_DCA']['tl_news_archive'])) {
+    array_insert($GLOBALS['TL_DCA']['tl_news_archive']['list']['global_operations'], 0, [
+        'import' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_news_archive']['import'],
+            'href' => 'key=import',
+            'icon' => 'bundles/pdircontentmigration/icons/002-import.svg',
+            'class' => 'pdir_content_migration news_import',
+            'attributes' => 'onclick="Backend.getScrollOffset()"',
+        ],
+    ]);
+}

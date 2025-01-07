@@ -16,6 +16,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+use Pdir\ContentMigrationBundle\Controller\FirefighterImportController;
 use Pdir\ContentMigrationBundle\Controller\NewsImportController;
 use Pdir\ContentMigrationBundle\Controller\PageExportController;
 use Pdir\ContentMigrationBundle\Controller\PageImportController;
@@ -23,6 +24,10 @@ use Pdir\ContentMigrationBundle\Controller\PageImportController;
 $GLOBALS['BE_MOD']['design']['page']['export'] = [PageExportController::class, 'run'];
 $GLOBALS['BE_MOD']['design']['page']['import'] = [PageImportController::class, 'run'];
 $GLOBALS['BE_MOD']['content']['news']['import'] = [NewsImportController::class, 'run'];
+
+if (isset($GLOBALS['BE_MOD']['con4gis']['c4g_firefighter_operations'])) {
+    $GLOBALS['BE_MOD']['con4gis']['c4g_firefighter_operations']['import'] = [FirefighterImportController::class, 'run'];
+}
 
 /*
  * Css
