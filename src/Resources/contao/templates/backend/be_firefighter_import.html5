@@ -66,14 +66,23 @@
           <h2></h2>
         </div>
         <div class="widget w50 clr">
-          <h3><label for="author"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['author'][0]?? '' ?></label></h3>
-          <select name="author" id="author" class="tl_select">
-            <?php foreach ($this->newsAuthorOptions as $value => $label): ?>
+          <h3><label for="typo3_tt_news_contao_news_archive"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['typo3_tt_news_contao_news_archive'][0]?? '' ?></label></h3>
+          <select name="typo3_tt_news_contao_news_archive" id="typo3_tt_news_contao_news_archive" class="tl_select">
+            <?php foreach ($this->newsArchiveOptions as $value => $label): ?>
               <option value="<?= $value ?>"><?= $label ?></option>
             <?php endforeach; ?>
           </select>
-          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['author'][1]?? '' ?></p>
-         </div>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['typo3_tt_news_contao_news_archive'][1]?? '' ?></p>
+        </div>
+          <div class="widget w50 clr">
+              <h3><label for="author"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['author'][0]?? '' ?></label></h3>
+              <select name="author" id="author" class="tl_select">
+                  <?php foreach ($this->newsAuthorOptions as $value => $label): ?>
+                  <option value="<?= $value ?>"><?= $label ?></option>
+                  <?php endforeach; ?>
+              </select>
+              <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['author'][1]?? '' ?></p>
+          </div>
         <div class="widget w50">
           <h3><label for="image_folder"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['image_folder'][0]?? '' ?></label></h3>
           <input type="text" name="image_folder" id="image_folder" class="tl_text" value="" placeholder="files/com_einsatzkomponente" required>

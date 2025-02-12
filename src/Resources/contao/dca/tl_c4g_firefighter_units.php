@@ -3,7 +3,7 @@
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 
 // Add fields
-if (!isset($GLOBALS['TL_DCA']['tl_c4g_firefighter_units']['fields']['link'])) {
+if (!isset($GLOBALS['TL_DCA']['tl_c4g_firefighter_units']['fields']['counter'])) {
     PaletteManipulator::create()
         ->addField('link', 'custom_legend', PaletteManipulator::POSITION_APPEND)
         ->addField('geox', 'custom_legend', PaletteManipulator::POSITION_APPEND)

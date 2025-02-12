@@ -154,7 +154,7 @@ class FirefighterImportController
             $stmt = $this->remoteConn->query($sql);
 
             while (($row = $stmt->fetchAssociative()) !== false) {
-                $this->addUnit($row);
+                // $this->addUnit($row);
             }
 
         } catch (ImportException $e) {
@@ -168,9 +168,10 @@ class FirefighterImportController
             // run db import with database prefix
             $sql = 'SELECT * FROM '.$this->databasePrefix.'eiko_tickerkat';
             $stmt = $this->remoteConn->query($sql);
+            // $stmt->execute();
 
             while (($row = $stmt->fetchAssociative()) !== false) {
-                $this->addCategory($row);
+                // $this->addCategory($row);
             }
 
             $message = $this->framework->getAdapter(Message::class);
@@ -347,7 +348,7 @@ class FirefighterImportController
     protected function addItem(array $data): void
     {
         $model = new C4gFirefighterOperationsModel();
-
+        
         // add fields
         $model->tstamp = \strtotime($data['createdate']);
         $model->importId = 1;
@@ -375,17 +376,38 @@ class FirefighterImportController
         $model->counter = $data['counter'];
 
         // add all images to gallery if exists
+        if ('' !== $data['image']) {
+            # dump($data['image']);
+            //die();
+        }
+        // $model->gallery = ('' !== $data['image'])? \serialize([$this->getImageFromPath($data['image'])]) : '';
+
         $gallery = [];
         if ('' !== $data['image']) {
             $gallery[] = $this->getImageFromPath($data['image']);
             ++$this->imageCounter;
         }
 
+        /*if($data['assets_id']) {
+            $jImages = \explode(',', $data['image']);
+            foreach($jImages as $img) {
+
+            }
+
+            ++$this->imageCounter;
+        } */
+
         $gallery = array_merge($gallery, $this->getImagesFromFolder('/einsatzbilder/'.$data['id']));
 
         $model->gallery = \serialize($gallery);
 
-        // Write to db
+        # dump($data);
+        #dump($model->gallery);
+        #die();
+        #if(10 === $this->imageCounter) {
+        #    die();
+        #}
+        //die();
         $model->save();
 
         ++$this->itemCounter;
