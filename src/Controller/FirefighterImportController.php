@@ -59,16 +59,6 @@ class FirefighterImportController
     public int $imageCounter = 0;
 
     /**
-     * @var int;
-     */
-    public int $newsArchive;
-
-    /**
-     * @var int;
-     */
-    public int $newsAuthor;
-
-    /**
      * @var string;
      */
     public string $imagePath;
@@ -348,12 +338,12 @@ class FirefighterImportController
     protected function addItem(array $data): void
     {
         $model = new C4gFirefighterOperationsModel();
-        
+
         // add fields
         $model->tstamp = \strtotime($data['createdate']);
         $model->importId = 1;
-        $model->caption = $data['summary'];
-        $model->description = $data['summary'];
+        $model->caption = $this->replaceSpecialCharacters($data['summary']??'');
+        $model->description = $data['desc'];
         $model->operation_type = 1;
         $model->operation_category = $data['tickerkat'];
         $model->operation_leader =
@@ -440,6 +430,11 @@ class FirefighterImportController
         $path = $this->imagePath.$folder;
 
         $pathModel = FilesModel::findByPath($path);
+
+        if (null === $pathModel) {
+            return $uuids;
+        }
+
         $files = FilesModel::findByPid($pathModel->uuid, ['order' => 'name']);
 
         if (null === $files) {
@@ -453,7 +448,6 @@ class FirefighterImportController
 
         return $uuids;
     }
-
 
     /**
      * Get slug for alias.
@@ -499,5 +493,14 @@ class FirefighterImportController
         }
 
         return str_replace('</link>', '</a>', $str);
+    }
+
+    public function replaceSpecialCharacters($str): string
+    {
+        if (null === $str) {
+            return '';
+        }
+
+        return str_replace(['&#40;', '&#41;'], ['(', ')'], $str);
     }
 }
