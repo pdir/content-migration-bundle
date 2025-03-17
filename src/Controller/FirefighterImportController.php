@@ -344,7 +344,7 @@ class FirefighterImportController
         $model->importId = 1;
         $model->caption = $this->replaceSpecialCharacters($data['summary']??'');
         $model->description = $data['desc'];
-        $model->operation_type = 1;
+        $model->operation_type = (int)C4gFirefighterOperationCategoriesModel::findById($data['tickerkat'])->operation_type;
         $model->operation_category = $data['tickerkat'];
         $model->operation_leader =
         $model->addTime = 1;
@@ -353,8 +353,8 @@ class FirefighterImportController
         $model->startDate = \strtotime($data['date1']);
         $model->endDate = ('0000-00-00 00:00:00' !== $data['date3'])? \strtotime($data['date3']) : \strtotime($data['date1']);;
         $model->location = $data['address'];
-        $model->loc_geox = $data['gmap_report_latitude']?? '';
-        $model->loc_geoy = $data['gmap_report_longitude']?? '';
+        $model->loc_geoy = $data['gmap_report_latitude']?? '';
+        $model->loc_geox = $data['gmap_report_longitude']?? '';
         $model->vehicles = \serialize(\explode(',', $data['vehicles']));
         $model->units = \serialize(\explode(',', $data['auswahl_orga']));
         $model->numberStaff = 0;
