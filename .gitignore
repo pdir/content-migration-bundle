@@ -1,5 +1,7 @@
 # Composer
 /composer.lock
 /vendor/
+
 *.sass
 *.css.map
+.DS_Store

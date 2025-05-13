@@ -23,8 +23,16 @@ use Pdir\ContentMigrationBundle\Controller\PageExportController;
 use Pdir\ContentMigrationBundle\Controller\PageImportController;
 use Symfony\Component\HttpFoundation\Request;
 
-$GLOBALS['BE_MOD']['design']['page']['export'] = [PageExportController::class, 'run'];
-$GLOBALS['BE_MOD']['design']['page']['import'] = [PageImportController::class, 'run'];
+if (isset($GLOBALS['BE_MOD']['design']['page'])) {
+    $GLOBALS['BE_MOD']['design']['page']['export'] = [PageExportController::class, 'run'];
+    $GLOBALS['BE_MOD']['design']['page']['import'] = [PageImportController::class, 'run'];
+}
+
+if (isset($GLOBALS['BE_MOD']['content']['page'])) {
+    $GLOBALS['BE_MOD']['content']['page']['export'] = [PageExportController::class, 'run'];
+    $GLOBALS['BE_MOD']['content']['page']['import'] = [PageImportController::class, 'run'];
+}
+
 $GLOBALS['BE_MOD']['content']['news']['import'] = [NewsImportController::class, 'run'];
 
 if (isset($GLOBALS['BE_MOD']['con4gis']['c4g_firefighter_operations'])) {

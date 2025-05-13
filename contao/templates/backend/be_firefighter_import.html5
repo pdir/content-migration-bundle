@@ -1,21 +1,20 @@
 <div class="pdir_content_migration">
   <div id="tl_buttons">
-    <a href="<?= ampersand($this->backUrl) ?>" class="header_back" title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
+    <a href="<?= \Contao\StringUtil::ampersand($this->backUrl) ?>" class="header_back" title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
   </div>
 
-  <div class="widget">
-    <h2><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import'][1] ?></h2>
-  </div>
-  <div class="widget page-import-text clr">
-    <p><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import_description'] ?></p>
+  <h2 class="sub_headline"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import'][1] ?></h2>
+
+  <p class="tl_empty"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import_description'] ?></p>
+
+  <div class="tl_message">
+    <?= $this->message ?>
   </div>
 
-  <?= $this->message ?>
-
-  <form action="<?= ampersand($this->action) ?>" id="tl_c4g_firefighter_operations_import" class="tl_form" method="post">
+  <form action="<?= \Contao\StringUtil::ampersand($this->action) ?>" id="tl_c4g_firefighter_operations_import" class="tl_form" method="post">
     <div class="tl_formbody_edit">
       <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formId ?>">
-      <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+      <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
 
       <fieldset class="tl_tbox type_legend">
         <legend onclick="AjaxRequest.toggleFieldset(this,'type_legend','tl_c4g_firefighter_operations')">Typ</legend>

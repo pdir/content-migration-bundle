@@ -366,38 +366,16 @@ class FirefighterImportController
         $model->counter = $data['counter'];
 
         // add all images to gallery if exists
-        if ('' !== $data['image']) {
-            # dump($data['image']);
-            //die();
-        }
-        // $model->gallery = ('' !== $data['image'])? \serialize([$this->getImageFromPath($data['image'])]) : '';
-
         $gallery = [];
         if ('' !== $data['image']) {
             $gallery[] = $this->getImageFromPath($data['image']);
             ++$this->imageCounter;
         }
 
-        /*if($data['assets_id']) {
-            $jImages = \explode(',', $data['image']);
-            foreach($jImages as $img) {
-
-            }
-
-            ++$this->imageCounter;
-        } */
-
         $gallery = array_merge($gallery, $this->getImagesFromFolder('/einsatzbilder/'.$data['id']));
 
         $model->gallery = \serialize($gallery);
 
-        # dump($data);
-        #dump($model->gallery);
-        #die();
-        #if(10 === $this->imageCounter) {
-        #    die();
-        #}
-        //die();
         $model->save();
 
         ++$this->itemCounter;
@@ -441,7 +419,6 @@ class FirefighterImportController
             return $uuids;
         }
 
-        #dump($files);
         foreach($files as $file) {
             $uuids[] = $file->uuid;
         }

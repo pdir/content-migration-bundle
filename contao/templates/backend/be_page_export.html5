@@ -1,28 +1,25 @@
 <div class="pdir_content_migration">
   <div id="tl_buttons">
-    <a href="<?= ampersand($this->backUrl) ?>" class="header_back" title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
+    <a href="<?= \Contao\StringUtil::ampersand($this->backUrl) ?>" class="header_back" title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
   </div>
 
   <h2 class="sub_headline"><?= $GLOBALS['TL_LANG']['tl_page']['export'][1] ?></h2>
 
-  <div class="widget page-export-text">
-    <p><?= $GLOBALS['TL_LANG']['tl_page']['export_description'] ?></p>
-  </div>
+  <p class="tl_empty"><?= $GLOBALS['TL_LANG']['tl_page']['export_description'] ?></p>
 
   <div class="tl_message">
-    <p class="tl_info current-user-folder"><?= $GLOBALS['TL_LANG']['tl_page']['export_userFolder'] ?> <?= $this->currentUserFolder ?>/[<?= strtoupper($GLOBALS['TL_LANG']['tl_page']['export_exportName'][0]) ?>]/
-  </p>
-
-  <div class="widget message">
+    <p class="tl_info current-user-folder">
+      <?= $GLOBALS['TL_LANG']['tl_page']['export_userFolder'] ?> <?= $this->currentUserFolder ?>/[<?= strtoupper($GLOBALS['TL_LANG']['tl_page']['export_exportName'][0]) ?>]/
+    </p>
     <?= $this->message ?>
-  <div>
+  </div>
 
-  <form action="<?= ampersand($this->action) ?>" id="tl_page_export" class="tl_form" method="post">
+  <form action="<?= \Contao\StringUtil::ampersand($this->action) ?>" id="tl_page_export" class="tl_form" method="post">
     <div class="tl_formbody_edit">
       <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formId ?>">
-      <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+      <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
 
-      <fieldset class="tl_tbox nolegend">
+      <fieldset class="tl_tbox">
         <div class="widget w50 clr">
           <h3><label for="type"><?= $GLOBALS['TL_LANG']['tl_page']['export_type'][0] ?></label></h3>
           <select name="type" id="type" class="tl_select">

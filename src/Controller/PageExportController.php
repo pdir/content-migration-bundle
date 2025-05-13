@@ -35,12 +35,14 @@ use Contao\TextField;
 use Pdir\ContentMigrationBundle\Exporter\ModelExporter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class PageExportController
 {
     private ContaoFramework $framework;
 
     private RequestStack $requestStack;
+    private SessionInterface $session;
 
     /**
      * ExportController constructor.
@@ -65,6 +67,8 @@ class PageExportController
         if ($request->request->get('FORM_SUBMIT') === $formId) {
             $this->processForm($request);
         }
+
+        $this->session = $request->getSession();
 
         return $this->getTemplate($formId)->parse();
     }
@@ -207,8 +211,8 @@ class PageExportController
         $system = $this->framework->getAdapter(System::class);
 
         /** @var AttributeBagInterface $objSession */
-        $objSession = System::getContainer()->get('session')->getBag('contao_backend');
-        $intNode = $objSession->get('tl_page_node');
+        $session = $this->session->getBag('contao_backend');
+        $intNode = $session->get('tl_page_node');
 
         $template = new BackendTemplate('be_page_export');
         $template->backUrl = $system->getReferer();

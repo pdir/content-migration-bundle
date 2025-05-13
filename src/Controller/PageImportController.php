@@ -44,6 +44,12 @@ class PageImportController
 
     private array $replacementIds;
 
+    private array $pageFields = [];
+
+    private array $articleFields = [];
+
+    private array $contentFields = [];
+
     /**
      * ExportController constructor.
      */
@@ -205,9 +211,16 @@ class PageImportController
     {
         $pageCounter = 0;
 
+        // Set pageFields
+        foreach ($GLOBALS['TL_DCA']['tl_page']['fields'] as $key => $field) {
+            if (is_array($field['sql']) && 'boolean' === $field['sql']['type']) {
+                $this->pageFields[] = $key;
+            }
+        }
+
         foreach ($filesModel as $fileModel) {
             if ('file' === $fileModel->type) {
-                if (0 === strpos($fileModel->name, 'page')) {
+                if (str_starts_with($fileModel->name, 'page')) {
                     $modelArr = $this->getModelFileContent($fileModel->path);
 
                     $pageModel = new PageModel();
@@ -238,6 +251,9 @@ class PageImportController
                         $pageModel->{$key} = $value;
                     }
 
+                    // Fix incorrect integer values for older export files
+                    $this->correctData($this->pageFields, $pageModel);
+
                     // write model to db
                     $pageModel->save();
 
@@ -257,9 +273,16 @@ class PageImportController
     {
         $articleCounter = 0;
 
+        // Set articleFields
+        foreach ($GLOBALS['TL_DCA']['tl_article']['fields'] as $key => $field) {
+            if (is_array($field['sql']) && 'boolean' === $field['sql']['type']) {
+                $this->articleFields[] = $key;
+            }
+        }
+
         foreach ($filesModel as $fileModel) {
             if ('file' === $fileModel->type) {
-                if (0 === strpos($fileModel->name, 'article')) {
+                if (str_starts_with($fileModel->name, 'article')) {
                     $modelArr = $this->getModelFileContent($fileModel->path);
                     $articleModel = new ArticleModel();
 
@@ -279,6 +302,15 @@ class PageImportController
 
                         $articleModel->{$key} = $value;
                     }
+
+                    // Fix null pid for old export files
+                    if (!isset($articleModel->pid) || '' == $articleModel->pid) {
+                        $articleModel->pid = 0;
+                    }
+
+                    // Fix incorrect integer values for older export files
+                    $this->correctData($this->articleFields, $articleModel);
+
                     $articleModel->save();
                     $this->replacementIds['articlePid'.$lastId] = $articleModel->id;
                     ++$articleCounter;
@@ -296,9 +328,16 @@ class PageImportController
     {
         $contentCounter = 0;
 
+        // Set contentFields
+        foreach ($GLOBALS['TL_DCA']['tl_content']['fields'] as $key => $field) {
+            if (is_array($field['sql']) && 'boolean' === $field['sql']['type']) {
+                $this->contentFields[] = $key;
+            }
+        }
+
         foreach ($filesModel as $fileModel) {
             if ('file' === $fileModel->type) {
-                if (0 === strpos($fileModel->name, 'content')) {
+                if (str_starts_with($fileModel->name, 'content')) {
                     $modelArr = $this->getModelFileContent($fileModel->path);
                     $contentModel = new ContentModel();
 
@@ -315,6 +354,9 @@ class PageImportController
 
                         $contentModel->{$key} = $value;
                     }
+
+                    // Fix incorrect integer values for older export files
+                    $this->correctData($this->contentFields, $contentModel);
 
                     $contentModel->save();
                     ++$contentCounter;
@@ -335,6 +377,15 @@ class PageImportController
 
         if (\is_array($content)) {
             return $content;
+        }
+    }
+
+    protected function correctData($fields, $model): void {
+        // Fix incorrect integer values for older export files
+        foreach ($fields as $value) {
+            if (!isset($model->{$value}) || '' == $model->{$value}) {
+                $model->{$value} = 0;
+            }
         }
     }
 }
