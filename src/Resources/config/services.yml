@@ -12,6 +12,13 @@ services:
             calls:
                 - ["setContainer", ["@service_container"]]
 
+    Pdir\ContentMigrationBundle\Controller\FirefighterImportController:
+        public: true
+        arguments:
+            - '@contao.framework'
+            - '@request_stack'
+            - '@contao.filesystem.virtual.files'
+
     Pdir\ContentMigrationBundle\Controller\PageExportController:
         public: true
         arguments:

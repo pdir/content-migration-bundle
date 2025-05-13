@@ -1,0 +1,101 @@
+<div class="pdir_content_migration">
+  <div id="tl_buttons">
+    <a href="<?= ampersand($this->backUrl) ?>" class="header_back" title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
+  </div>
+
+  <div class="widget">
+    <h2><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import'][1] ?></h2>
+  </div>
+  <div class="widget page-import-text clr">
+    <p><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import_description'] ?></p>
+  </div>
+
+  <?= $this->message ?>
+
+  <form action="<?= ampersand($this->action) ?>" id="tl_c4g_firefighter_operations_import" class="tl_form" method="post">
+    <div class="tl_formbody_edit">
+      <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formId ?>">
+      <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>">
+
+      <fieldset class="tl_tbox type_legend">
+        <legend onclick="AjaxRequest.toggleFieldset(this,'type_legend','tl_c4g_firefighter_operations')">Typ</legend>
+        <div class="widget w50 clr">
+          <h3><label for="type"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import_type'][0] ?></label></h3>
+          <select name="type" id="type" class="tl_select" onchange="this.form.submit()">
+            <?php foreach ($this->typeOptions as $value => $label): ?>
+              <option value="<?= $value ?>"><?= $label ?></option>
+            <?php endforeach; ?>
+          </select>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import_type'][1]?? '' ?></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="tl_tbox typo3_legend">
+        <legend onclick="AjaxRequest.toggleFieldset(this,'typo3_legend','tl_c4g_firefighter_operations')">Quelle - Daten der Joomla! Installation</legend>
+        <div class="widget w50 clr">
+          <h3><label for="remote_host"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_host'][0] ?></label></h3>
+          <input type="text" name="remote_host" id="remote_host" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_host'][1] ?></p>
+        </div>
+        <div class="widget w50">
+          <h3><label for="remote_database"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_database'][0] ?></label></h3>
+          <input type="text" name="remote_database" id="remote_database" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_database'][1] ?></p>
+        </div>
+        <div class="widget w50 clr">
+          <h3><label for="remote_database_prefix"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_database_prefix'][0] ?></label></h3>
+          <input type="text" name="remote_database_prefix" id="remote_database_prefix" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_database_prefix'][1] ?></p>
+        </div>
+
+        <div class="widget w50">
+          <h3><label for="remote_user"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_user'][0]?? '' ?></label></h3>
+          <input type="text" name="remote_user" id="remote_user" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_user'][1]?? '' ?></p>
+        </div>
+        <div class="widget w50">
+          <h3><label for="remote_password"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_password'][0]?? '' ?></label></h3>
+          <input type="text" name="remote_password" id="remote_password" class="tl_text" value="" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['remote_password'][1]?? '' ?></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="tl_tbox target_legend">
+        <legend onclick="AjaxRequest.toggleFieldset(this,'target_legend','tl_c4g_firefighter_operations')">Ziel - con4gis Firefighter</legend>
+        <div class="widget clr">
+          <h2></h2>
+        </div>
+        <div class="widget w50 clr">
+          <h3><label for="typo3_tt_news_contao_news_archive"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['typo3_tt_news_contao_news_archive'][0]?? '' ?></label></h3>
+          <select name="typo3_tt_news_contao_news_archive" id="typo3_tt_news_contao_news_archive" class="tl_select">
+            <?php foreach ($this->newsArchiveOptions as $value => $label): ?>
+              <option value="<?= $value ?>"><?= $label ?></option>
+            <?php endforeach; ?>
+          </select>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['typo3_tt_news_contao_news_archive'][1]?? '' ?></p>
+        </div>
+          <div class="widget w50 clr">
+              <h3><label for="author"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['author'][0]?? '' ?></label></h3>
+              <select name="author" id="author" class="tl_select">
+                  <?php foreach ($this->newsAuthorOptions as $value => $label): ?>
+                  <option value="<?= $value ?>"><?= $label ?></option>
+                  <?php endforeach; ?>
+              </select>
+              <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['author'][1]?? '' ?></p>
+          </div>
+        <div class="widget w50">
+          <h3><label for="image_folder"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['image_folder'][0]?? '' ?></label></h3>
+          <input type="text" name="image_folder" id="image_folder" class="tl_text" value="" placeholder="files/com_einsatzkomponente" required>
+          <p class="tl_help tl_tip"><?= $GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['image_folder'][1]?? '' ?></p>
+        </div>
+      </fieldset>
+
+    </div>
+
+    <div class="tl_formbody_submit">
+      <div class="tl_submit_container">
+        <input type="submit" name="import" id="import" class="tl_submit" accesskey="e" value="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['tl_c4g_firefighter_operations']['import'][0]) ?>">
+      </div>
+    </div>
+  </form>
+</div>
