@@ -16,10 +16,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+use Contao\System;
 use Pdir\ContentMigrationBundle\Controller\FirefighterImportController;
 use Pdir\ContentMigrationBundle\Controller\NewsImportController;
 use Pdir\ContentMigrationBundle\Controller\PageExportController;
 use Pdir\ContentMigrationBundle\Controller\PageImportController;
+use Symfony\Component\HttpFoundation\Request;
 
 $GLOBALS['BE_MOD']['design']['page']['export'] = [PageExportController::class, 'run'];
 $GLOBALS['BE_MOD']['design']['page']['import'] = [PageImportController::class, 'run'];
@@ -32,6 +34,6 @@ if (isset($GLOBALS['BE_MOD']['con4gis']['c4g_firefighter_operations'])) {
 /*
  * Css
  */
-if (TL_MODE === 'BE') {
+if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest() ?? Request::create(''))) {
     $GLOBALS['TL_CSS'][] = 'bundles/pdircontentmigration/css/pdir_cm_backend.css|screen';
 }

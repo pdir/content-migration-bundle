@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Contao\ArrayUtil;
+
 /*
  * Content migration bundle for Contao Open Source CMS
  *
@@ -16,19 +18,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-array_insert($GLOBALS['TL_DCA']['tl_page']['list']['global_operations'], 0, [
-    'export' => [
-        'label' => &$GLOBALS['TL_LANG']['tl_page']['export'],
-        'href' => 'key=export',
-        'icon' => 'bundles/pdircontentmigration/icons/001-export.svg',
-        'class' => 'pdir_content_migration page_export',
-        'attributes' => 'onclick="Backend.getScrollOffset()"',
-    ],
+ArrayUtil::arrayInsert($GLOBALS['TL_DCA']['tl_news_archive']['list']['global_operations'], 0, [
     'import' => [
-        'label' => &$GLOBALS['TL_LANG']['tl_page']['import'],
+        'label' => &$GLOBALS['TL_LANG']['tl_news_archive']['import'],
         'href' => 'key=import',
         'icon' => 'bundles/pdircontentmigration/icons/002-import.svg',
-        'class' => 'pdir_content_migration page_import',
+        'class' => 'pdir_content_migration news_import',
         'attributes' => 'onclick="Backend.getScrollOffset()"',
     ],
 ]);

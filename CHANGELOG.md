@@ -10,6 +10,11 @@ Types of changes
     Security in case of vulnerabilities.
 )
 
+## [1.1.0](https://github.com/pdir/content-migration-bundle/tree/1.1.0) – 2025-05-13
+
+- [Added] support Contao 5.3 and higher
+- [Added] add [con4gis firefighter](https://contao.store/erweiterung/con4gis-firefighter.html) import from Joomla! [com_einsatzkomponente](https://einsatzkomponente.de)
+
 ## [1.0.1](https://github.com/pdir/content-migration-bundle/tree/1.0.1) – 2023-06-27
 
 - [Fixed] Fix import

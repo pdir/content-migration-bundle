@@ -51,3 +51,11 @@ Viel Spaß dabei.
 ## Dokumentation
 
 [Deutsche Handbuch](https://pdir.de/docs/de/contao/extensions/content-migration/)
+
+## DEV
+
+run before commit
+
+    vendor/bin/ecs check src tests
+    vendor/bin/phpstan analyse
+    vendor/bin/phpunit --colors=always

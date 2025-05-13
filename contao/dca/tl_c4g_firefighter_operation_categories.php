@@ -2,6 +2,10 @@
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 
+if (!isset($GLOBALS['TL_DCA']['tl_c4g_firefighter_operation_categories'])) {
+    return;
+}
+
 // Add fields
 if (!isset($GLOBALS['TL_DCA']['tl_c4g_firefighter_operation_categories']['fields']['counter'])) {
     PaletteManipulator::create()

@@ -13,7 +13,13 @@
         "content",
         "theme",
         "news",
-        "TYPO3"
+        "TYPO3",
+        "sync",
+        "firefighter",
+        "con4gis",
+        "Joomla",
+        "einsatzkomponente",
+        "feuerwehr"
     ],
     "authors": [
         {
@@ -26,9 +32,9 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.0",
         "ausi/slug-generator": "^1.1",
-        "contao/core-bundle": "^4.4"
+        "contao/core-bundle": "^4.13 || ^5.3"
     },
     "conflict": {
         "contao/core": "*",
@@ -62,5 +68,13 @@
         "cs-fixer": [
             "vendor/bin/ecs check src/ tests/ --fix --ansi"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "php-http/discovery": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "contao/manager-plugin": true
+        }
     }
 }

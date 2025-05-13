@@ -5,11 +5,12 @@ declare(strict_types=1);
 /*
  * Content migration bundle for Contao Open Source CMS
  *
- * Copyright (c) 2022 pdir / digital agentur // pdir GmbH
+ * Copyright (c) 2025 pdir / digital agentur // pdir GmbH
  *
  * @package    content-migration-bundle
  * @link       https://pdir.de
  * @license    LGPL-3.0+
+ * @author     pdir GmbH <https://pdir.de>
  * @author     Mathias Arzberger <develop@pdir.de>
  *
  * For the full copyright and license information, please view the LICENSE
